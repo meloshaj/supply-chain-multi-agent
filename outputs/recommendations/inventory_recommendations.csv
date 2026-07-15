@@ -1,0 +1,13 @@
+product_id,risk_status,inventory_level,predicted_daily_demand,reorder_point,recommended_replenishment_quantity,recommendation,priority
+SKU-001,Severe Overstock,1287.87,40.4484,402.2103,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+SKU-002,Potential Overstock,238.31,53.2547,125.9726,0.0,Reduce the next purchase order and consider a targeted promotion,Medium
+SKU-003,Severe Overstock,935.77,78.6062,357.0153,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+SKU-004,Healthy Inventory,1590.53,116.4652,1499.7737,0.0,Maintain current inventory strategy,Low
+SKU-005,Healthy Inventory,248.32,40.9186,215.5879,0.0,Maintain current inventory strategy,Low
+SKU-006,Severe Overstock,2710.08,71.1471,403.9215,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+SKU-007,High Stockout Risk,0.86,15.8122,381.6309,380.7709,Urgent reorder and review supplier lead time,High
+SKU-008,Medium Stockout Risk,1214.82,153.3263,1819.4771,604.6571,Schedule normal replenishment and review safety-stock policy,Medium
+SKU-009,Medium Stockout Risk,598.65,106.4282,1155.6034,556.9534,Schedule normal replenishment and review safety-stock policy,Medium
+SKU-010,High Stockout Risk,94.15,114.748,989.2156,895.0656,Urgent reorder and review supplier lead time,High
+SKU-011,Severe Overstock,499.97,42.4147,186.4572,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+SKU-012,Severe Overstock,3347.84,54.3758,443.8256,0.0,Suspend immediate replenishment and consider a targeted promotion,High

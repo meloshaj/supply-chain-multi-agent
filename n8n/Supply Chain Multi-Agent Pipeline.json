@@ -1,0 +1,505 @@
+{
+  "name": "Supply Chain Multi-Agent Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/health",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        816,
+        -464
+      ],
+      "id": "af882c8c-e1d0-45f2-a96e-3bf383b3a877",
+      "name": "Python API Health Check"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        368,
+        -800
+      ],
+      "id": "79a748df-6756-4435-9a45-ee4bd9fc2731",
+      "name": "Manual Trigger"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"base_url\": \"http://host.docker.internal:8000\",\n  \"dataset_path\": \"data/raw/supply_chain_data.csv\",\n  \"processed_dataset_path\": \"data/processed/processed_supply_chain_data.csv\",\n  \"forecast_results_path\": \"outputs/tables/forecast_results.csv\",\n  \"inventory_results_path\": \"outputs/tables/inventory_risks.csv\",\n  \"test_fraction\": 0.2,\n  \"service_level_z\": 1.65\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        608,
+        -992
+      ],
+      "id": "965e891b-d02c-4946-99da-1c7143ff271d",
+      "name": "Project Configuration"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "061d40d9-77df-4e06-a3c1-9af8bfad6a27",
+              "name": "pipeline_status ",
+              "value": "failed",
+              "type": "string"
+            },
+            {
+              "id": "23e65a12-91ca-4322-8dd6-e746d011664a",
+              "name": "=failed_agent ",
+              "value": "={{ $node.name }}",
+              "type": "string"
+            },
+            {
+              "id": "f20bcc11-fd7d-44ac-9ac4-82320887246e",
+              "name": "error_message",
+              "value": "={{ $json.detail || $json.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2384,
+        -320
+      ],
+      "id": "592486de-a7e6-4d76-84a7-3c77acf085fe",
+      "name": "Pipeline Error Handler"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d3cc0f6d-040d-49c8-b7d5-242ca3136a25",
+              "name": "pipeline_status",
+              "value": "completed",
+              "type": "string"
+            },
+            {
+              "id": "6f732535-8da4-4355-be8c-934133e97570",
+              "name": "message",
+              "value": "Supply-chain multi-agent pipeline completed successfully",
+              "type": "string"
+            },
+            {
+              "id": "ba7f75b1-5d56-4cb7-8c47-0074a6dac1aa",
+              "name": "=recommendations_path ",
+              "value": "={{ $json.recommendation_path }}",
+              "type": "string"
+            },
+            {
+              "id": "0fc0ace5-350e-4cda-bdd9-7537ceab7dde",
+              "name": "urgent_actions",
+              "value": "={{ $json.urgent_actions }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3120,
+        -784
+      ],
+      "id": "aed32331-c3a8-4068-a246-0f4cd4352577",
+      "name": "Final Pipeline Summary"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/agents/recommend",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"inventory_results_path\": \"outputs/tables/inventory_risks.csv\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2896,
+        -976
+      ],
+      "id": "2feac041-7089-4c74-86b8-fcc84ab3ede2",
+      "name": "Recommendation Agent"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/agents/visualize",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"processed_dataset_path\": \"data/processed/processed_supply_chain_data.csv\",\n  \"forecast_results_path\": \"outputs/tables/forecast_results.csv\",\n  \"inventory_results_path\": \"outputs/tables/inventory_risks.csv\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2688,
+        -976
+      ],
+      "id": "30c2a75f-09ae-445b-be14-cf5accad5c65",
+      "name": "Visualization Agent"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/agents/inventory",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"forecast_results_path\": \"outputs/tables/forecast_results.csv\",\n  \"service_level_z\": 1.65\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2448,
+        -976
+      ],
+      "id": "dc959077-54db-48d9-87b8-889b1e190860",
+      "name": "Inventory Analysis Agent"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d0eea6e5-e025-4d3f-afb9-4a4993ee7dfc",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "success",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2224,
+        -784
+      ],
+      "id": "959b4f7f-3863-434d-bb72-3266b69ddde2",
+      "name": "Forecast Successful ?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/agents/forecast",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"processed_dataset_path\": \"data/processed/processed_supply_chain_data.csv\",\n  \"test_fraction\": 0.2\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        2000,
+        -992
+      ],
+      "id": "d789ec33-13bc-4d41-bbcc-971f81247d72",
+      "name": "Forecasting Agent"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "fc94791d-262a-431c-84a5-a892b4f5cae4",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "success",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1776,
+        -784
+      ],
+      "id": "1ab51f42-f40f-4e58-9ba8-020646b094a1",
+      "name": "Preprocessing Successful?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/agents/preprocess",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"dataset_path\": \"data/raw/supply_chain_data.csv\",\n  \"test_fraction\": 0.2\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1536,
+        -992
+      ],
+      "id": "5cf438bb-d20e-4537-ba50-a48711b770b0",
+      "name": "Preprocessing Agent"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "dce950b2-30c2-4f74-b37d-12515ee49561",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "success",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1328,
+        -784
+      ],
+      "id": "0f31eb48-bbd9-432e-bb2d-42d3b4c171f0",
+      "name": "Data Valid?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/agents/data",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"dataset_path\": \"data/raw/supply_chain_data.csv\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1072,
+        -992
+      ],
+      "id": "260fee61-1765-4294-b0a3-4a5a9ff5e845",
+      "name": "Data Agent"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Python API Health Check": {
+      "main": [
+        [
+          {
+            "node": "Data Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Project Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Project Configuration": {
+      "main": [
+        [
+          {
+            "node": "Python API Health Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Pipeline Summary": {
+      "main": [
+        []
+      ]
+    },
+    "Recommendation Agent": {
+      "main": [
+        [
+          {
+            "node": "Final Pipeline Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Visualization Agent": {
+      "main": [
+        [
+          {
+            "node": "Recommendation Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inventory Analysis Agent": {
+      "main": [
+        [
+          {
+            "node": "Visualization Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Forecast Successful ?": {
+      "main": [
+        [
+          {
+            "node": "Inventory Analysis Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pipeline Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Forecasting Agent": {
+      "main": [
+        [
+          {
+            "node": "Forecast Successful ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preprocessing Successful?": {
+      "main": [
+        [
+          {
+            "node": "Forecasting Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pipeline Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preprocessing Agent": {
+      "main": [
+        [
+          {
+            "node": "Preprocessing Successful?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Valid?": {
+      "main": [
+        [
+          {
+            "node": "Preprocessing Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pipeline Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Agent": {
+      "main": [
+        [
+          {
+            "node": "Data Valid?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e955649b-b191-49b2-abca-8a0bb9f680ee",
+  "meta": {
+    "instanceId": "539e82855edbbc26406d9732affeb5dbdda4f25cb386d70b315543d014a44b5c"
+  },
+  "nodeGroups": [],
+  "id": "Opt3yvLKHywvVaHQ",
+  "tags": []
+}

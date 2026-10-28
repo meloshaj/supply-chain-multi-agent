@@ -1,0 +1,10 @@
+configuration,mae,rmse,mape,wape,delta_mae_percent
+Full model (all features),4.1311,5.948,57.4739,33.2027,0.0
+Without promotion,4.1448,5.9666,57.5285,33.313,0.3323
+Without price,4.1381,5.9728,57.366,33.2586,0.1684
+Without calendar features,4.3097,6.1806,58.712,34.6378,4.3224
+Without lag features,4.1087,5.9531,58.4922,33.0225,-0.5427
+Without rolling statistics,4.2051,6.0484,58.1903,33.7973,1.7909
+Without prior-day inventory,4.0922,5.9132,57.7773,32.8898,-0.9422
+Without supplier lead time,4.1548,5.9637,58.993,33.3929,0.5731
+Minimal configuration (calendar + commercial only),4.4483,6.6654,61.0998,35.752,7.678

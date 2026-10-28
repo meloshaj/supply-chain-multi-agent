@@ -1,0 +1,29 @@
+{
+  "n8n_execution_status": "success",
+  "workflow_id": "Opt3yvLKHywvVaHQ",
+  "started_at": "2026-10-15T09:10:54.091Z",
+  "stopped_at": "2026-10-15T09:11:30.396Z",
+  "last_node_executed": "Final Pipeline Summary",
+  "pipeline_summary": {
+    "pipeline_status": "completed",
+    "message": "Supply-chain multi-agent pipeline completed successfully",
+    "recommendations_path ": "outputs/recommendations/inventory_recommendations.csv",
+    "urgent_actions": "9"
+  },
+  "nodes_executed_in_order": [
+    "Manual Trigger",
+    "Project Configuration",
+    "Python API Health Check",
+    "Data Agent",
+    "Data Valid?",
+    "Preprocessing Agent",
+    "Preprocessing Successful?",
+    "Forecasting Agent",
+    "Forecast Successful ?",
+    "Inventory Analysis Agent",
+    "Visualization Agent",
+    "Recommendation Agent",
+    "Final Pipeline Summary"
+  ],
+  "error_branch_triggered": false
+}

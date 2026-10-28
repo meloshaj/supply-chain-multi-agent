@@ -17,3 +17,8 @@ temp/
 # Local/private agent metadata
 .agents/
 .codex/
+
+# Raw external benchmark datasets (>100MB)
+data/sales_train_evaluation.csv
+data/sell_prices.csv
+data/calendar.csv

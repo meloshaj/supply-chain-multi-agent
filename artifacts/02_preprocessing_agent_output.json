@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "agent": "Preprocessing Agent",
+  "processed_path": "data/processed/processed_supply_chain_data.csv",
+  "training_path": "data/processed/train_supply_chain_data.csv",
+  "testing_path": "data/processed/test_supply_chain_data.csv",
+  "rows_before": 4380,
+  "rows_after": 4380,
+  "training_rows": 3516,
+  "testing_rows": 864,
+  "training_start": "2015-05-24",
+  "training_end": "2016-03-11",
+  "testing_start": "2016-03-12",
+  "testing_end": "2016-05-22",
+  "features_created": [
+    "day_of_week",
+    "month",
+    "week_of_year",
+    "is_weekend",
+    "inventory_lag_1",
+    "lag_1",
+    "lag_7",
+    "rolling_mean_7",
+    "rolling_std_7"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "status": "success",
+  "agent": "Recommendation Agent",
+  "recommendations_generated": 12,
+  "urgent_actions": 9,
+  "recommendation_path": "outputs/recommendations/inventory_recommendations.csv"
+}

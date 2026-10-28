@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "agent": "Visualization Agent",
+  "figures_generated": 8,
+  "figure_paths": [
+    "outputs/figures/demand_over_time.png",
+    "outputs/figures/actual_vs_predicted_demand.png",
+    "outputs/figures/baseline_vs_random_forest_metrics.png",
+    "outputs/figures/demand_by_product.png",
+    "outputs/figures/forecast_error_distribution.png",
+    "outputs/figures/inventory_risk_category_counts.png",
+    "outputs/figures/current_inventory_vs_reorder_point.png",
+    "outputs/figures/recommended_replenishment_quantity_by_product.png"
+  ],
+  "publication_figures_generated": 6,
+  "publication_figure_paths": [
+    "figures/fig1_error_metrics.png",
+    "figures/fig2_ablation_mae.png",
+    "figures/fig3_feature_importance.png",
+    "figures/fig4_case_a_high_volume.png",
+    "figures/fig5_case_b_volatile.png",
+    "figures/fig6_case_c_promotion.png"
+  ]
+}

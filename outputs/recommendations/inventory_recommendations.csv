@@ -1,13 +1,13 @@
 product_id,risk_status,inventory_level,predicted_daily_demand,reorder_point,recommended_replenishment_quantity,recommendation,priority
-SKU-001,Severe Overstock,1287.87,40.4484,402.2103,0.0,Suspend immediate replenishment and consider a targeted promotion,High
-SKU-002,Potential Overstock,238.31,53.2547,125.9726,0.0,Reduce the next purchase order and consider a targeted promotion,Medium
-SKU-003,Severe Overstock,935.77,78.6062,357.0153,0.0,Suspend immediate replenishment and consider a targeted promotion,High
-SKU-004,Healthy Inventory,1590.53,116.4652,1499.7737,0.0,Maintain current inventory strategy,Low
-SKU-005,Healthy Inventory,248.32,40.9186,215.5879,0.0,Maintain current inventory strategy,Low
-SKU-006,Severe Overstock,2710.08,71.1471,403.9215,0.0,Suspend immediate replenishment and consider a targeted promotion,High
-SKU-007,High Stockout Risk,0.86,15.8122,381.6309,380.7709,Urgent reorder and review supplier lead time,High
-SKU-008,Medium Stockout Risk,1214.82,153.3263,1819.4771,604.6571,Schedule normal replenishment and review safety-stock policy,Medium
-SKU-009,Medium Stockout Risk,598.65,106.4282,1155.6034,556.9534,Schedule normal replenishment and review safety-stock policy,Medium
-SKU-010,High Stockout Risk,94.15,114.748,989.2156,895.0656,Urgent reorder and review supplier lead time,High
-SKU-011,Severe Overstock,499.97,42.4147,186.4572,0.0,Suspend immediate replenishment and consider a targeted promotion,High
-SKU-012,Severe Overstock,3347.84,54.3758,443.8256,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+FOODS_1_085,Severe Overstock,152.38,10.1486,42.1963,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+FOODS_1_218,Severe Overstock,141.95,11.4528,49.1822,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+FOODS_2_019,Potential Overstock,221.82,25.6983,127.8839,0.0,Reduce the next purchase order and consider a targeted promotion,Medium
+FOODS_2_244,Medium Stockout Risk,23.01,7.7005,39.6216,16.6116,Schedule normal replenishment and review safety-stock policy,Medium
+FOODS_3_064,High Stockout Risk,45.63,40.673,233.1654,187.5354,Urgent reorder and review supplier lead time,High
+FOODS_3_586,High Stockout Risk,104.65,59.6554,359.9723,255.3223,Urgent reorder and review supplier lead time,High
+HOBBIES_1_048,Medium Stockout Risk,130.21,13.9859,163.2292,33.0192,Schedule normal replenishment and review safety-stock policy,Medium
+HOBBIES_1_155,High Stockout Risk,20.99,3.6447,48.1927,27.2027,Urgent reorder and review supplier lead time,High
+HOBBIES_2_033,Severe Overstock,28.18,0.1434,3.4242,0.0,Suspend immediate replenishment and consider a targeted promotion,High
+HOBBIES_2_043,High Stockout Risk,10.93,1.5556,22.6795,11.7495,Urgent reorder and review supplier lead time,High
+HOUSEHOLD_1_418,High Stockout Risk,51.02,17.0856,122.0965,71.0765,Urgent reorder and review supplier lead time,High
+HOUSEHOLD_1_535,High Stockout Risk,19.71,12.0818,82.2324,62.5224,Urgent reorder and review supplier lead time,High

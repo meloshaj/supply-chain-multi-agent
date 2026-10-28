@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "agent": "Inventory Analysis Agent",
+  "products_analyzed": 12,
+  "high_stockout_risk": 6,
+  "medium_stockout_risk": 2,
+  "healthy_inventory": 0,
+  "potential_overstock": 1,
+  "severe_overstock": 3,
+  "inventory_results_path": "outputs/tables/inventory_risks.csv"
+}

@@ -1,0 +1,95 @@
+{
+  "status": "success",
+  "agent": "Data Agent",
+  "dataset_path": "data/raw/supply_chain_data.csv",
+  "rows_loaded": 4380,
+  "columns_loaded": 10,
+  "products_found": 12,
+  "missing_values": {
+    "date": 0,
+    "product_id": 0,
+    "category": 0,
+    "units_sold": 0,
+    "price": 0,
+    "promotion": 0,
+    "inventory_level": 0,
+    "supplier_lead_time": 0,
+    "stockout_flag": 0,
+    "overstock_flag": 0
+  },
+  "duplicate_rows": 0,
+  "date_min": "2015-05-24",
+  "date_max": "2016-05-22",
+  "descriptive_statistics": {
+    "units_sold": {
+      "count": 4380,
+      "mean": 12.647,
+      "std": 13.62,
+      "min": 0,
+      "25%": 3,
+      "50%": 8,
+      "75%": 17,
+      "max": 90
+    },
+    "price": {
+      "count": 4380,
+      "mean": 3.786,
+      "std": 5.003,
+      "min": 0.48,
+      "25%": 0.98,
+      "50%": 1.43,
+      "75%": 4.05,
+      "max": 18.98
+    },
+    "promotion": {
+      "count": 4380,
+      "mean": 0.384,
+      "std": 0.486,
+      "min": 0,
+      "25%": 0,
+      "50%": 0,
+      "75%": 1,
+      "max": 1
+    },
+    "inventory_level": {
+      "count": 4380,
+      "mean": 113.882,
+      "std": 119.687,
+      "min": 0,
+      "25%": 31.4,
+      "50%": 76.885,
+      "75%": 146.97,
+      "max": 715.15
+    },
+    "supplier_lead_time": {
+      "count": 4380,
+      "mean": 5.833,
+      "std": 2.115,
+      "min": 3,
+      "25%": 4,
+      "50%": 5.5,
+      "75%": 8,
+      "max": 9
+    },
+    "stockout_flag": {
+      "count": 4380,
+      "mean": 0.011,
+      "std": 0.103,
+      "min": 0,
+      "25%": 0,
+      "50%": 0,
+      "75%": 0,
+      "max": 1
+    },
+    "overstock_flag": {
+      "count": 4380,
+      "mean": 0.07,
+      "std": 0.255,
+      "min": 0,
+      "25%": 0,
+      "50%": 0,
+      "75%": 0,
+      "max": 1
+    }
+  }
+}
